@@ -1,9 +1,7 @@
 name: Deploy Infrastructure
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch
 
 jobs:
   tf_fmt:
@@ -18,7 +16,7 @@ jobs:
       uses: hashicorp/terraform-github-actions/init@v0.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: 'terraform'
+        TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
         PROJECT_ID: ${{secrets.GCLOUD_PROJECT_ID_A}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
 
@@ -29,6 +27,6 @@ jobs:
       uses: hashicorp/terraform-github-actions/apply@v0.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: 'terraform'
+        TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
         PROJECT_ID: ${{secrets.GCLOUD_PROJECT_ID_A}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
