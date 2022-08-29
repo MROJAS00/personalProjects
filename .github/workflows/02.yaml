@@ -14,17 +14,20 @@ jobs:
 
     - name: Terraform Init
       uses: hashicorp/setup-terraform@v2
+      run: terraform init
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
         PROJECT_ID: ${{secrets.GCLOUD_PROJECT_ID_A}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
 
-    - name: Terraform Validate
-      uses: hashicorp/setup-terraform@v2
+    # - name: Terraform Validate
+    #   uses: hashicorp/setup-terraform@v2
+    #   run: terraform validate -no-color
 
     - name: Terraform Apply
       uses: hashicorp/setup-terraform@v2
+      run: terraform apply \ -input=false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
