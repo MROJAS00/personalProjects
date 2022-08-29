@@ -10,7 +10,7 @@ jobs:
     steps:
 
     - name: Checkout Repo
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Terraform Init
       uses: hashicorp/setup-terraform@v2
@@ -21,10 +21,10 @@ jobs:
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
 
     - name: Terraform Validate
-      uses: hashicorp/terraform-github-actions/validate@v0.3.7
+      uses: hashicorp/setup-terraform@v2
 
     - name: Terraform Apply
-      uses: hashicorp/terraform-github-actions/apply@v0.4.0
+      uses: hashicorp/setup-terraform@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
