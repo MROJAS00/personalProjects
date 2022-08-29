@@ -27,7 +27,7 @@ jobs:
 
     - name: Terraform Apply
       # uses: hashicorp/setup-terraform@v2
-      run: terraform apply \ -input=false
+      run:  terraform apply -auto-aprove
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TF_ACTION_WORKING_DIR: '02-CICD-infra-gcp/terraform'
