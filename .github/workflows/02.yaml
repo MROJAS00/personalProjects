@@ -17,7 +17,7 @@ jobs:
       run: terraform init
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: './02-CICD-infra-gcp/terraform'
+        TF_ACTIONS_WORKING_DIR: './02-CICD-infra-gcp/terraform'
         PROJECT_ID: ${{secrets.GCLOUD_PROJECT_ID_A}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
 
@@ -30,6 +30,6 @@ jobs:
       run:  terraform apply -auto-approve
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: './02-CICD-infra-gcp/terraform'
+        TF_ACTIONS_WORKING_DIR: './02-CICD-infra-gcp/terraform'
         PROJECT_ID: ${{secrets.GCLOUD_PROJECT_ID_A}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
